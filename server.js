@@ -41,11 +41,13 @@ var userSchema = new mongoose.Schema({
 var User = mongoose.model('User', userSchema);
 /*end mongodb*/
 
+/*
 app.post('/send', function(req, res) {
     console.log(req.body);
-    var sendBack = req.body.a + " server geri döndü.";
+    var sendBack = req.body.a + " server has sent back.";
     res.json(sendBack);
 });
+*/
 
 app.post('/login', function(req, res) {
     delete req.session.user;
@@ -84,19 +86,19 @@ app.post('/signup', function(req, res) {
             res.json({
                 username: req.session.user + 'dummy'
             });
-            console.log(post.username + " kullanici adi zaten kullaniliyor!");
+            console.log(post.username + " is already in use!");
         } else {
             if (post.username) {
                 res.json({
                     username: post.username
                 });
-                console.log(post.username + ' basariyla eklendi!');
+                console.log(post.username + ' added successfully!');
             } else {
                 req.session.user = '';
                 res.json({
                     username: req.session.user
                 });
-                console.log(post.username + " hata");
+                console.log(post.username + ", there is an error");
             }
         }
     });
