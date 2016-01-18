@@ -1,3 +1,3 @@
 # MEAN_Stack
 
-Tutorial of a Single Page Application with login, signup. 
+Sample of a Single Page Application with login, signup. 
