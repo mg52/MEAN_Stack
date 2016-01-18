@@ -58,7 +58,7 @@ app.controller('loginController', function($scope, $http, $location) {
                 if (user.username == $scope.username) {
                     $location.url('/main');
                 } else {
-                    $scope.message = 'Yanlış Kullanıcı Adı veya Şifre.';
+                    $scope.message = 'Bad username or password.';
                 }
             })
             .error(function() {
@@ -78,9 +78,9 @@ app.controller('signupController', function($scope, $http, $location) {
             .success(function(user) { /*???*/
                 if (user.username == $scope.username) {
                     $location.url('/signup');
-                    $scope.message = $scope.username + ' eklendi.';
+                    $scope.message = $scope.username + ' added.';
                 } else {
-                    $scope.message = 'Bu kullanici adi baskasi tarafindan kullaniliyor!';
+                    $scope.message = 'This username is used by someone else!';
                 }
             })
             .error(function() {
