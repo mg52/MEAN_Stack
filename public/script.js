@@ -1,14 +1,17 @@
 var app = angular.module('mean_stack', ['ngRoute']);
 
 app.config(function($routeProvider) {
-    var checkLogin = function($http, $location) {
+    var checkLogin = function($q, $http, $location) {
+        var deferred = $q.defer();
         $http.get('/getUserDetails').success(function(user) {
-            if (user.username == '') {
-                $location.url('/');
+            if (user.username !== '') {
+                deferred.resolve();
             } else {
-                $location.url('/main');
+                deferred.reject();
+                $location.url('/');
             }
         });
+        return deferred.promise;
     };
     var checkSignup = function($http, $location) {
         $http.get('/getUserDetails').success(function(user) {
@@ -31,7 +34,7 @@ app.config(function($routeProvider) {
             templateUrl: 'signup.html',
             controller: 'signupController',
             resolve: {
-                loggedin: checkSignup
+                loggedin: checkLogin
             }
         })
         .when('/main', {
