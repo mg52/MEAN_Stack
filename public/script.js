@@ -1,6 +1,6 @@
 var app = angular.module('mean_stack', ['ngResource', 'ngRoute']);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider, $httpProvider) {
     var checkLogin = function($q, $http, $location) {
         var deferred = $q.defer();
         $http.get('/getUserDetails').success(function(user) {
