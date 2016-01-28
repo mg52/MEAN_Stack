@@ -34,6 +34,7 @@ app.config(function($routeProvider) {
                 deferred.resolve();
                 //$location.url('/signup');
             } else {
+                deferred.reject();
                 $location.url('/main');
             }
         });
