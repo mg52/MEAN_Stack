@@ -36,7 +36,7 @@ app.config(function($routeProvider) {
             templateUrl: 'signup.html',
             controller: 'signupController',
             resolve: {
-                loggedin: checkLogin
+                loggedin: checkSignup
             }
         })
         .when('/main', {
