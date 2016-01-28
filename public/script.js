@@ -15,22 +15,37 @@ app.config(function($routeProvider) {
         });
         return deferred.promise;
     };
-    var checkSignup = function($http, $location) {
+    var checkIndex = function($q, $http, $location) {
+        var deferred = $q.defer();
         $http.get('/getUserDetails').success(function(user) {
             if (user.username == '') {
-                $location.url('/signup');
+                deferred.resolve();
+            } else {
+                deferred.reject();
+                $location.url('/main');
+            }
+        });
+        return deferred.promise;
+    };
+    var checkSignup = function($q, $http, $location) {
+        $http.get('/getUserDetails').success(function(user) {
+            var deferred = $q.defer();
+            if (user.username == '') {
+                deferred.resolve();
+                //$location.url('/signup');
             } else {
                 $location.url('/main');
             }
         });
+        return deferred.promise;
     };
     $routeProvider
         .when('/', {
             templateUrl: 'login.html',
             controller: 'loginController',
-            //resolve: {
-            //    loggedin: checkLogin
-            //}
+            resolve: {
+                loggedin: checkIndex
+            }
         })
         .when('/signup', {
             templateUrl: 'signup.html',
