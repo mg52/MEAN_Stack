@@ -1,4 +1,4 @@
-var app = angular.module('mean_stack', ['ngRoute']);
+var app = angular.module('mean_stack', ['ngResource', 'ngRoute']);
 
 app.config(function($routeProvider) {
     var checkLogin = function($q, $http, $location) {
