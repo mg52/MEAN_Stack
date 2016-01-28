@@ -28,9 +28,9 @@ app.config(function($routeProvider) {
         .when('/', {
             templateUrl: 'login.html',
             controller: 'loginController',
-            resolve: {
-                loggedin: checkLogin
-            }
+            //resolve: {
+            //    loggedin: checkLogin
+            //}
         })
         .when('/signup', {
             templateUrl: 'signup.html',
