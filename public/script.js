@@ -1,6 +1,8 @@
+'use strict';
+
 var app = angular.module('mean_stack', ['ngRoute']);
 
-app.config(function($routeProvider, $locationProvider, $httpProvider) {
+app.config(function($routeProvider) {
     var checkLogin = function($q, $http, $location) {
         var deferred = $q.defer();
         $http.get('/getUserDetails').success(function(user) {
