@@ -30,7 +30,7 @@ app.config(function($routeProvider) {
     var checkSignup = function($q, $http, $location) {
         $http.get('/getUserDetails').success(function(user) {
             var deferred = $q.defer();
-            if (user.username == '') {
+            if (user.username !== '') {
                 deferred.resolve();
                 //$location.url('/signup');
             } else {
