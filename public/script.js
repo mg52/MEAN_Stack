@@ -28,9 +28,9 @@ app.config(function($routeProvider) {
         return deferred.promise;
     };
     var checkSignup = function($q, $http, $location) {
+        var deferred = $q.defer();
         $http.get('/getUserDetails').success(function(user) {
-            var deferred = $q.defer();
-            if (user.username !== '') {
+            if (user.username == '') {
                 deferred.resolve();
                 //$location.url('/signup');
             } else {
