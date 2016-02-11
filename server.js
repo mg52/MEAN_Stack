@@ -1,5 +1,6 @@
 var port = process.env.PORT || 5000;
 var express = require('express');
+var cors = require('cors');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var cookieParser = require('cookie-parser');
@@ -16,6 +17,7 @@ app.use(expressSession({
 app.use(express.static(__dirname + '/public'));
 app.use("/assets", express.static(__dirname + "/assets"));
 app.use(bodyParser.json());
+app.use(cors());
 /*mongodb*/
 var mongoose = require('mongoose');
 var uristring = process.env.MONGOLAB_URI || 'mongodb://localhost/mean_stack';
