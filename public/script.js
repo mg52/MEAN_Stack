@@ -7,10 +7,10 @@ app.config(function($routeProvider) {
         var deferred = $q.defer();
         $http.get('/getUserDetails').success(function(user) {
             if (user.username !== '') {
-                console.log(1);
+                console.log('1' + ' ' + user.username);
                 deferred.resolve();
             } else {
-                console.log(2);
+                console.log('2' + ' ' + user.username);
                 deferred.reject();
                 $location.url('/');
             }
